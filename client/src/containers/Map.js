@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import ReactMapGL, { Marker } from 'react-map-gl'
-import Constants from '../config/Constants'
+import Constants from '../Constants'
 import { getBuses } from '../actions'
 import CardWrapper from '../components/CardWrapper'
 import AppbarWrapper from '../components/AppbarWrapper';

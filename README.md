@@ -18,7 +18,6 @@ git checkout -b [your feature branch name]
 
 To start the express server:
 ```
-cd server
 cp .env.example .env
 npm install
 npm start
