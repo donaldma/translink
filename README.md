@@ -1,10 +1,10 @@
 # TransLink React App
 
-This project was bootstrapped with <a href="https://github.com/facebook/create-react-app" target="_blank">Create React App</a>.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
 Web App built with react/redux front end and node, express back end.
 
-<a href="https://donaldma-translink.herokuapp.com/" target="_blank">Deployed Version</a>
+[Deployed Version](https://donaldma-translink.herokuapp.com/)
 
 ## Development
 
@@ -20,7 +20,7 @@ To start the express server:
 ```
 cp .env.example .env
 npm install
-npm start
+npm run dev
 ```
 
 To start the client server:
@@ -32,7 +32,7 @@ npm start
 npm run build - creates production ready build
 ```
 
-You are all set, open the web app on your browser: <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>
+You are all set, open the web app on your browser: [http://localhost:3000](http://localhost:3000)
 
 #### Pushing code
 
@@ -46,7 +46,7 @@ git merge master
 git push origin [your feature branch name]
 ```
 
-Go on the <a href="https://github.com/donaldma/translink" target="_blank">Github Repository</a>
+Go on the [Github Repository](https://github.com/donaldma/translink)
 <br>
 Create a new pull request
 <br>
