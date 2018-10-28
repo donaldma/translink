@@ -1,0 +1,10 @@
+.marker:before {
+  content: ' ';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #E85040;
+  border-radius: 8px;
+  border: 1px solid black;
+  margin: 0 8px;
+}

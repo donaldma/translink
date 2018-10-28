@@ -1,0 +1,1 @@
+export const GET_BUSES = 'GET_BUSES'
