@@ -1,5 +1,5 @@
 const ENV = process.env.ENV || 'development'
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 const express = require('express')
 const path = require('path')
 const app = express()
@@ -7,10 +7,11 @@ const http = require('http')
 const server = http.createServer(app)
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const axios = require('axios')
 const Constants = require('./config/Constants')
 
 setInterval(function() {
-  http.get('https://donaldma-translink.herokuapp.com/')
+  axios.get('https://donaldma-translink.herokuapp.com/')
 }, 300000);
 
 app.use(cors())
@@ -42,6 +43,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-server.listen(process.env.PORT || PORT, () => {
+server.listen(PORT, () => {
   console.log('Server running on', PORT)
 })
