@@ -7,7 +7,7 @@ import ReactMapGL, { Marker } from 'react-map-gl'
 import Constants from '../Constants'
 import { getBuses } from '../actions'
 import CardWrapper from '../components/CardWrapper'
-import AppbarWrapper from '../components/AppbarWrapper';
+import AppbarWrapper from '../components/AppbarWrapper'
 
 const styles = theme => ({
   root: {}
@@ -104,7 +104,10 @@ class Map extends Component {
 }
 
 Map.propTypes = {
-  busesReducer: PropTypes.array,
+  busesReducer: PropTypes.oneOfType([
+    PropTypes.array.isRequired,
+    PropTypes.object.isRequired
+  ]),
   getBuses: PropTypes.func
 }
 
