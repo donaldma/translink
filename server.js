@@ -9,6 +9,10 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const Constants = require('./config/Constants')
 
+setInterval(function() {
+  http.get('https://donaldma-translink.herokuapp.com/')
+}, 300000);
+
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
