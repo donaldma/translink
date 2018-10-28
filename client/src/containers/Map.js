@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
-import Drawer from '@material-ui/core/Drawer'
 import ReactMapGL, { Marker } from 'react-map-gl'
 import Constants from '../Constants'
 import { getBuses } from '../actions'
-import CardWrapper from '../components/CardWrapper'
-import AppbarWrapper from '../components/AppbarWrapper'
+import DrawerWrapper from '../components/DrawerWrapper'
+import GeosuggestWrapper from '../components/GeosuggestWrapper'
 
 const styles = theme => ({
   root: {}
@@ -18,7 +17,7 @@ class Map extends Component {
     viewport: {
       latitude: 49.2827291,
       longitude: -123.12073750000002,
-      zoom: 14,
+      zoom: 13,
       bearing: 0,
       pitch: 0,
       width: window.innerWidth,
@@ -36,7 +35,7 @@ class Map extends Component {
   componentDidMount() {
     window.addEventListener('resize', this.resize)
     this.resize()
-    setInterval(this.props.getBuses, 20000)
+    // setInterval(this.props.getBuses, 20000)
   }
 
   resize = () => {
@@ -62,21 +61,17 @@ class Map extends Component {
     this.toggleDrawer(true, busInfo)
   }
 
-  renderBusInfo = () => {
-    const { busInfo } = this.state
-    return (
-      <div>
-        <AppbarWrapper title='Bus Info' handleCick={() => this.toggleDrawer(false, undefined)} />
-        <div className='p-3'>
-          <CardWrapper icon='card_travel' title='Trip Id' text={busInfo.TripId} />
-          <CardWrapper icon='directions_bus' title='Vehicle Number' text={busInfo.VehicleNo} />
-          <CardWrapper icon='map' title='Route Number' text={busInfo.RouteNo} link={busInfo.RouteMap.Href} />
-          <CardWrapper icon='directions' title='Direction' text={busInfo.Direction.charAt(0) + busInfo.Direction.slice(1).toLowerCase()} />
-          <CardWrapper icon='place' title='Destination' text={busInfo.Destination} />
-          <CardWrapper icon='access_time' title='Recorded Time' text={busInfo.RecordedTime} />
-        </div>
-      </div>
-    )
+  onSuggestSelect = (location) => {
+    console.log(location)
+    if(location) {
+      this.setState({
+        viewport: {
+          ...this.state.viewport,
+          latitude: location.location.lat,
+          longitude: location.location.lng
+        }
+      })
+    }
   }
 
   render() {
@@ -87,9 +82,12 @@ class Map extends Component {
         mapboxApiAccessToken={Constants.mapboxToken}
         mapStyle='mapbox://styles/mapbox/streets-v9'
       >
-        <Drawer anchor='left' open={this.state.isDrawerOpen} onClose={() => this.toggleDrawer(false, undefined)}>
-          {this.state.busInfo && this.renderBusInfo()}
-        </Drawer>
+        <GeosuggestWrapper onSuggestSelect={this.onSuggestSelect} />
+        <DrawerWrapper
+          isDrawerOpen={this.state.isDrawerOpen}
+          toggleDrawer={this.toggleDrawer}
+          busInfo={this.state.busInfo}
+        />
         {
           this.props.busesReducer !== null && !this.props.busesReducer.error &&
           this.props.busesReducer.map(x => (

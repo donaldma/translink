@@ -1,0 +1,64 @@
+.geosuggest__item {
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.geosuggest__suggests-wrapper{
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  font-size: 16px;
+  z-index: 1199;
+  top: 54px;
+  left: 0px;
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+  width: 100%;
+}
+
+.geosuggest__suggests {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.geosuggest__suggests--hidden {
+  max-height: 0;
+  overflow: hidden;
+  border-width: 0;
+}
+
+.geosuggest__item--active {
+  background-color: #f5f5f5;
+}
+
+.geosuggest__item {
+  &:hover {
+    background-color: #f5f5f5;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.location-input {
+  z-index: 1199;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  padding-left: 2em;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  color: #4a4a4a;
+  background-color: #ffffff;
+  height: 44px;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  &:focus {
+    outline: none;
+  }
+}
+
