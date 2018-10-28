@@ -66,11 +66,11 @@ class Map extends Component {
     const { busInfo } = this.state
     return (
       <div>
-        <AppbarWrapper title='Bus Info' handleCick={() => this.toggleDrawer(false, undefined)}/>
+        <AppbarWrapper title='Bus Info' handleCick={() => this.toggleDrawer(false, undefined)} />
         <div className='p-3'>
           <CardWrapper icon='card_travel' title='Trip Id' text={busInfo.TripId} />
           <CardWrapper icon='directions_bus' title='Vehicle Number' text={busInfo.VehicleNo} />
-          <CardWrapper icon='map' title='Route Number' text={busInfo.RouteNo} link={busInfo.RouteMap.Href}/>
+          <CardWrapper icon='map' title='Route Number' text={busInfo.RouteNo} link={busInfo.RouteMap.Href} />
           <CardWrapper icon='directions' title='Direction' text={busInfo.Direction.charAt(0) + busInfo.Direction.slice(1).toLowerCase()} />
           <CardWrapper icon='place' title='Destination' text={busInfo.Destination} />
           <CardWrapper icon='access_time' title='Recorded Time' text={busInfo.RecordedTime} />
@@ -91,7 +91,8 @@ class Map extends Component {
           {this.state.busInfo && this.renderBusInfo()}
         </Drawer>
         {
-          this.props.busesReducer !== null && this.props.busesReducer.map(x => (
+          this.props.busesReducer !== null && !this.props.busesReducer.error &&
+          this.props.busesReducer.map(x => (
             <Marker key={x.VehicleNo} latitude={x.Latitude} longitude={x.Longitude}>
               <div className='marker' onClick={() => this.handleMarkerClick(x)}></div>
             </Marker>
