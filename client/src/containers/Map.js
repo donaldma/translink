@@ -13,19 +13,27 @@ const styles = theme => ({
 })
 
 class Map extends Component {
-  state = {
-    viewport: {
-      latitude: 49.2827291,
-      longitude: -123.12073750000002,
-      zoom: 13,
-      bearing: 0,
-      pitch: 0,
-      width: window.innerWidth,
-      height: window.innerHeight
-    },
-    isDrawerOpen: false,
-    busInfo: undefined,
-    error: ''
+  constructor(props) {
+    super(props)
+    let latitude, longitude
+    if (props.location.state) {
+      latitude = props.location.state.latitude
+      longitude = props.location.state.longitude
+    }
+
+    this.state = {
+      viewport: {
+        latitude: latitude || 49.2827291,
+        longitude: longitude || -123.12073750000002,
+        zoom: 13,
+        bearing: 0,
+        pitch: 0,
+        width: window.innerWidth,
+        height: window.innerHeight
+      },
+      isDrawerOpen: false,
+      busInfo: undefined
+    }
   }
 
   componentWillMount() {
@@ -66,8 +74,7 @@ class Map extends Component {
   }
 
   onSuggestSelect = (location) => {
-    console.log(location)
-    if(location) {
+    if (location) {
       this.setState({
         viewport: {
           ...this.state.viewport,

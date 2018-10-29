@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './Home'
 import Map from '../containers/Map'
 import RouteMap from '../containers/RouteMap'
 import Notfound from './Notfound'
@@ -11,7 +12,8 @@ class App extends Component {
       <Router>
         <div>
           <Switch>
-            <Route exact path="/" component={Map} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/map" component={Map} />
             <Route exact path="/route/:routeId" component={RouteMap} />
             <Route component={Notfound} />
           </Switch>
