@@ -1,1 +1,2 @@
 export const GET_BUSES = 'GET_BUSES'
+export const GET_ROUTE_GEOJSON = 'GET_ROUTE_GEOJSON'

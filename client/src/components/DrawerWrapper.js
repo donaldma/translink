@@ -13,6 +13,7 @@ class DrawerWrapper extends Component {
 
   render() {
     const { isDrawerOpen, toggleDrawer, busInfo } = this.props
+
     return (
       <Drawer anchor='left' open={isDrawerOpen} onClose={() => toggleDrawer(false, undefined)}>
         {
@@ -22,7 +23,7 @@ class DrawerWrapper extends Component {
             <div className='p-3'>
               <CardWrapper icon='card_travel' title='Trip Id' text={busInfo.TripId} />
               <CardWrapper icon='directions_bus' title='Vehicle Number' text={busInfo.VehicleNo} />
-              <CardWrapper icon='map' title='Route Number' text={busInfo.RouteNo} link={busInfo.RouteMap.Href} />
+              <CardWrapper link={true} icon='map' title='Route Number' text={busInfo.RouteNo} />
               <CardWrapper icon='directions' title='Direction' text={busInfo.Direction.charAt(0) + busInfo.Direction.slice(1).toLowerCase()} />
               <CardWrapper icon='place' title='Destination' text={busInfo.Destination} />
               <CardWrapper icon='access_time' title='Recorded Time' text={busInfo.RecordedTime} />
