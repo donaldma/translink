@@ -32,13 +32,13 @@ class CardWrapper extends Component {
               </div>
             </div>
             <div className='col-10'>
-              <Typography className={classes.title} color="textSecondary" gutterBottom>
+              <Typography className={classes.title} color='textSecondary' gutterBottom>
                 {title}
               </Typography>
-              <Typography component="p">
+              <Typography component='p'>
                 {
                   link ?
-                    <a href={`/route/${text}`} target='_blank'>{text}</a>
+                    <a href={`/route/${text}`} target='_blank' rel='noopener noreferrer'>{text}</a>
                     : text
                 }
               </Typography>
