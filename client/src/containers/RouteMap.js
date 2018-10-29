@@ -34,6 +34,14 @@ class RouteMap extends Component {
 
     await this.props.getRouteGeoJSON(this.state.routeId)
 
+    this.setState({
+      viewport: {
+        ...this.state.viewport,
+        latitude: this.props.routeGeojsonReducer.latitude,
+        longitude: this.props.routeGeojsonReducer.longitude,
+      }
+    })
+
     const map = this.reactMap.getMap()
     map.on('load', () => {
       map.addLayer({
@@ -52,14 +60,6 @@ class RouteMap extends Component {
           "line-width": 4
         }
       })
-    })
-
-    this.setState({
-      viewport: {
-        ...this.state.viewport,
-        latitude: this.props.routeGeojsonReducer.latitude,
-        longitude: this.props.routeGeojsonReducer.longitude,
-      }
     })
   }
 
