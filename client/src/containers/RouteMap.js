@@ -33,7 +33,26 @@ class RouteMap extends Component {
     this.resize()
 
     await this.props.getRouteGeoJSON(this.state.routeId)
-    await this.loadRoute(this.props.routeGeojsonReducer.geoJson)
+
+    const map = this.reactMap.getMap()
+    map.on('load', () => {
+      map.addLayer({
+        "id": "route",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": this.props.routeGeojsonReducer.geoJson
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "round"
+        },
+        "paint": {
+          "line-color": "#4285F4",
+          "line-width": 4
+        }
+      })
+    })
 
     this.setState({
       viewport: {
@@ -55,28 +74,6 @@ class RouteMap extends Component {
         width: window.innerWidth,
         height: window.innerHeight
       }
-    })
-  }
-
-  loadRoute = () => {
-    const map = this.reactMap.getMap()
-    map.on('load', () => {
-      map.addLayer({
-        "id": "route",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": this.props.routeGeojsonReducer.geoJson
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "#4285F4",
-          "line-width": 4
-        }
-      })
     })
   }
 
