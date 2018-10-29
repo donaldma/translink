@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -39,7 +38,7 @@ class CardWrapper extends Component {
               <Typography component="p">
                 {
                   link ?
-                    <Link to={`/route/${text}`} target='_blank'>{text}</Link>
+                    <a href={`/route/${text}`} target='_blank'>{text}</a>
                     : text
                 }
               </Typography>
