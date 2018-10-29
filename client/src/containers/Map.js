@@ -43,7 +43,7 @@ class Map extends Component {
   componentDidMount() {
     window.addEventListener('resize', this.resize)
     this.resize()
-    setInterval(this.props.getBuses, 20000)
+    setInterval(this.props.getBuses, 10000)
   }
 
   componentWillUnmount() {
