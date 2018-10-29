@@ -33,7 +33,7 @@ class RouteMap extends Component {
     this.resize()
 
     await this.props.getRouteGeoJSON(this.state.routeId)
-    this.loadRoute(this.props.routeGeojsonReducer.geoJson)
+    await this.loadRoute(this.props.routeGeojsonReducer.geoJson)
 
     this.setState({
       viewport: {
