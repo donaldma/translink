@@ -42,9 +42,10 @@ class RouteMap extends Component {
       }
     })
 
-    const map = this.reactMap.getMap()
-    map.on('load', () => {
-      map.addLayer({
+    const map = await this.reactMap.getMap()
+    console.log('MAP',map)
+    await map.on('load', async () => {
+      await map.addLayer({
         "id": "route",
         "type": "line",
         "source": {
