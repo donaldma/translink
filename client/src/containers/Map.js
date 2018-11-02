@@ -101,8 +101,8 @@ class Map extends Component {
         />
         {
           this.props.busesReducer !== null && !this.props.busesReducer.error &&
-          this.props.busesReducer.map(x => (
-            <Marker key={x.VehicleNo} latitude={x.Latitude} longitude={x.Longitude}>
+          this.props.busesReducer.map((x, i) => (
+            <Marker key={i} latitude={x.Latitude} longitude={x.Longitude}>
               <div className='marker' onClick={() => this.handleMarkerClick(x)}></div>
             </Marker>
           ))
