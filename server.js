@@ -13,7 +13,7 @@ const Constants = require('./config/Constants')
 const Helpers = require('./config/Helpers')
 
 setInterval(function () {
-  axios.get('https://donaldma-translink.herokuapp.com/')
+  axios.get('https://www.google.com/')
 }, 300000);
 
 app.use(cors())
