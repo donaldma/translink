@@ -7,14 +7,9 @@ const http = require('http')
 const server = http.createServer(app)
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const axios = require('axios')
 const KMZGeoJSON = require('kmz-geojson')
 const Constants = require('./config/Constants')
 const Helpers = require('./config/Helpers')
-
-setInterval(function () {
-  axios.get('https://www.google.com/')
-}, 300000);
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
